@@ -1,0 +1,29 @@
+/* Bảng màu Caelestia (Material 3 dark) dùng chung cho launcher + popup */
+* {
+    surface:              #131317b3;
+    surface-container:    #1f1f25cc;
+    surface-container-hi: #2a292fcc;
+    primary:              #c6bfff;
+    on-primary:           #2f2a60;
+    primary-container:    #454077e6;
+    on-primary-container: #e4dfff;
+    on-surface:           #e5e1e9;
+    on-surface-variant:   #c8c5d0;
+    outline:              #6f6d78;
+    error:                #ffb4ab;
+
+    /* ghi đè biến của theme mặc định (vốn có foreground tối) */
+    foreground:                  @on-surface;
+    normal-foreground:           @on-surface;
+    alternate-normal-foreground: @on-surface;
+    active-foreground:           @primary;
+    alternate-active-foreground: @primary;
+    selected-normal-foreground:  @on-primary-container;
+    selected-active-foreground:  @on-primary-container;
+    selected-urgent-foreground:  @on-primary-container;
+    border-color:                transparent;
+    separatorcolor:              transparent;
+
+    background-color: transparent;
+    text-color: @on-surface;
+}

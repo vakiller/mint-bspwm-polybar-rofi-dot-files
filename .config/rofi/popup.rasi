@@ -1,0 +1,84 @@
+/* Theme nền cho các popup gắn dưới polybar (lịch, âm lượng, nguồn).
+ * Vị trí (x-offset/y-offset) và nội dung textbox do script truyền vào qua -theme-str. */
+@import "colors.rasi"
+
+configuration {
+    show-icons: false;
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
+}
+
+* {
+    font: "JetBrains Mono Medium 10";
+    icon-font: "Material Symbols Rounded 15";
+}
+
+window {
+    location: north west;
+    anchor: north west;
+    x-offset: 0;
+    y-offset: 46px;
+    width: 340px;
+    border: 0;
+    border-radius: 0 0 14px 14px;   /* góc trên vuông để dính liền mép dưới polybar */
+    background-color: @surface;
+}
+
+mainbox {
+    padding: 16px;
+    spacing: 12px;
+}
+
+listview {
+    spacing: 4px;
+    scrollbar: false;
+    fixed-height: false;
+    dynamic: true;
+    cycle: false;
+}
+
+element {
+    padding: 10px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+}
+element normal.normal, element alternate.normal {
+    background-color: transparent;
+    text-color: @on-surface;
+}
+element selected.normal {
+    background-color: @surface-container-hi;
+    text-color: @on-surface;
+}
+element normal.active, element alternate.active, element selected.active {
+    background-color: @primary-container;
+    text-color: @on-primary-container;
+}
+element normal.urgent, element alternate.urgent, element selected.urgent {
+    background-color: transparent;
+    text-color: @on-surface-variant;
+}
+element-text {
+    text-color: inherit;
+    background-color: transparent;
+    vertical-align: 0.5;
+}
+
+/* Nút icon tròn dùng chung */
+button {
+    font: @icon-font;
+    padding: 6px 8px;
+    border-radius: 999px;
+    background-color: @surface-container;
+    text-color: @on-surface;
+    cursor: pointer;
+    expand: false;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+}
+textbox {
+    background-color: transparent;
+    text-color: @on-surface;
+    vertical-align: 0.5;
+}

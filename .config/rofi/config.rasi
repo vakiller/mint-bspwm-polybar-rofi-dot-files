@@ -1,0 +1,143 @@
+/* Caelestia-style launcher (Material 3 dark), transparent + picom blur */
+
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    icon-theme: "Mint-Y-Sand";
+    display-drun: "Apps";
+    display-run: "Run";
+    display-window: "Windows";
+    drun-display-format: "{name}";
+    window-format: "{c} · {t}";
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
+}
+
+@import "colors.rasi"
+
+* {
+    font: "JetBrains Mono Medium 11";
+}
+
+window {
+    location: center;
+    anchor: center;
+    width: 560px;
+    border: 0;
+    border-radius: 10px;   /* khớp corner-radius của picom để blur không lem góc */
+    background-color: @surface;
+}
+
+mainbox {
+    padding: 14px;
+    spacing: 12px;
+    children: [inputbar, listview, mode-switcher];
+}
+
+/* Thanh tìm kiếm dạng pill */
+inputbar {
+    padding: 12px 18px;
+    spacing: 12px;
+    border-radius: 999px;
+    background-color: @surface-container-hi;
+    text-color: @on-surface;
+    children: [icon-search, entry, prompt];
+}
+
+icon-search {
+    expand: false;
+    filename: "system-search-symbolic";
+    size: 18px;
+    vertical-align: 0.5;
+}
+
+entry {
+    vertical-align: 0.5;
+    text-color: @on-surface;
+    placeholder: "Type to search…";
+    placeholder-color: @on-surface-variant;
+    cursor: text;
+}
+
+prompt {
+    padding: 2px 10px;
+    border-radius: 999px;
+    background-color: @primary;
+    text-color: @on-primary;
+    font: "JetBrains Mono Bold 9";
+    vertical-align: 0.5;
+}
+
+listview {
+    lines: 7;
+    columns: 1;
+    spacing: 4px;
+    fixed-height: true;
+    scrollbar: false;
+    cycle: true;
+}
+
+element {
+    padding: 10px 14px;
+    spacing: 14px;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color: transparent;
+    text-color: @on-surface;
+}
+
+element selected.normal {
+    background-color: @primary-container;
+    text-color: @on-primary-container;
+}
+
+element normal.active,
+element alternate.active {
+    text-color: @primary;
+}
+
+element-icon {
+    size: 28px;
+    vertical-align: 0.5;
+    background-color: transparent;
+}
+
+element-text {
+    vertical-align: 0.5;
+    text-color: inherit;
+    background-color: transparent;
+    highlight: bold #c6bfff;
+}
+
+/* Chuyển mode dạng các chip nhỏ */
+mode-switcher {
+    spacing: 8px;
+}
+
+button {
+    padding: 8px;
+    border-radius: 999px;
+    background-color: @surface-container;
+    text-color: @on-surface-variant;
+    cursor: pointer;
+}
+
+button selected {
+    background-color: @primary;
+    text-color: @on-primary;
+}
+
+message {
+    padding: 10px 16px;
+    border-radius: 16px;
+    background-color: @surface-container;
+}
+
+textbox {
+    text-color: @on-surface-variant;
+}

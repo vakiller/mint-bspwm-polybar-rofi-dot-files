@@ -1,0 +1,48 @@
+#!/bin/sh
+
+# ---- Core ----
+pgrep -x sxhkd >/dev/null || sxhkd &
+
+# Workspaces
+bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+
+# Layout
+bspc config border_width 2
+bspc config window_gap 14
+bspc config split_ratio 0.52
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+
+# Colors
+bspc config normal_border_color "#2A2E36"
+bspc config active_border_color "#6F7785"
+bspc config focused_border_color "#C5C9D3"
+bspc config presel_feedback_color "#C5C9D3"
+
+# Mouse
+bspc config pointer_modifier mod4
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner
+
+# Cursor
+xsetroot -cursor_name left_ptr
+
+# ---- Autostart ----
+# Wallpaper: change this path if needed
+WALL="$HOME/Pictures/Wallpapers/wall.jpg"
+[ -f "$WALL" ] && feh --bg-fill "$WALL" &
+
+# picom v13 (có animation, build tại ~/.local/bin) nếu có; không thì picom v10 của hệ thống + config cũ
+if ! pgrep -x picom >/dev/null; then
+    if [ -x "$HOME/.local/bin/picom" ]; then
+        "$HOME/.local/bin/picom" --config "$HOME/.config/picom/picom.conf" &
+    else
+        picom --config "$HOME/.config/picom/picom-legacy.conf" &
+    fi
+fi
+pgrep -x dunst >/dev/null || dunst &
+pgrep -x flameshot >/dev/null || flameshot &
+pgrep -x fcitx5 >/dev/null || fcitx5 -d &
+
+"$HOME/.config/polybar/launch.sh" &

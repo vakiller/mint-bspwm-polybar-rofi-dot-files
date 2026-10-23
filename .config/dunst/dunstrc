@@ -1,0 +1,95 @@
+# Dunst – thông báo kiểu Caelestia (Material 3 dark), trong suốt + blur của picom
+[global]
+    monitor = 0
+    follow = mouse
+    origin = top-right
+    offset = 26x52             # sát dưới polybar (offset-y 8 + height 38 + 6)
+    width = 340
+    height = 160
+    notification_limit = 5
+    gap_size = 6
+
+    progress_bar = true
+    progress_bar_height = 6
+    progress_bar_frame_width = 0
+    progress_bar_min_width = 150
+    progress_bar_max_width = 308
+    progress_bar_corner_radius = 3
+
+    padding = 14
+    horizontal_padding = 16
+    text_icon_padding = 14
+    frame_width = 0
+    corner_radius = 10         # khớp corner-radius của picom
+    separator_height = 1
+    separator_color = "#ffffff14"
+    sort = yes
+
+    font = JetBrains Mono Medium 10
+    line_height = 2
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    ellipsize = end
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = no
+
+    enable_recursive_icon_lookup = true
+    icon_theme = Mint-Y-Sand
+    icon_position = left
+    # thông báo không gửi icon → không hiện icon (mặc định dunst là dialog-information kiểu cũ)
+    default_icon = ""
+    min_icon_size = 32
+    max_icon_size = 40
+
+    mouse_left_click = do_action, close_current
+    mouse_middle_click = close_all
+    mouse_right_click = close_current
+
+[urgency_low]
+    background = "#131317cc"
+    foreground = "#c8c5d0"
+    highlight = "#c6bfff"
+    timeout = 4
+
+[urgency_normal]
+    background = "#131317cc"
+    foreground = "#e5e1e9"
+    highlight = "#c6bfff"
+    timeout = 6
+
+[urgency_critical]
+    background = "#2a1517e6"
+    foreground = "#ffdad6"
+    highlight = "#ffb4ab"
+    frame_color = "#ffb4ab"
+    timeout = 0
+
+# OSD âm lượng: gọn, chữ tím
+[volume_osd]
+    appname = volume
+    format = "<span foreground='#c6bfff'><b>%s</b></span>   %b"
+    history_ignore = yes
+
+# Thay icon hệ thống kiểu cũ (dialog-*) bằng Material Symbols Rounded tô màu Caelestia
+[icon_info]
+    icon = "*dialog-info*"
+    new_icon = ~/.config/dunst/icons/info.svg
+[icon_info_plain]
+    icon = "info*"
+    new_icon = ~/.config/dunst/icons/info.svg
+[icon_warning]
+    icon = "*dialog-warning*"
+    new_icon = ~/.config/dunst/icons/warning.svg
+[icon_error]
+    icon = "*dialog-error*"
+    new_icon = ~/.config/dunst/icons/error.svg
+[icon_question]
+    icon = "*dialog-question*"
+    new_icon = ~/.config/dunst/icons/question.svg
+[icon_done]
+    icon = "*emblem-ok*"
+    new_icon = ~/.config/dunst/icons/done.svg

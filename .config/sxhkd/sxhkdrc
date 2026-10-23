@@ -1,0 +1,103 @@
+#
+# Apps
+#
+
+super + Return
+    kitty
+
+super + space
+    rofi -show drun
+
+super + e
+    thunar
+
+super + b
+    firefox
+
+#
+# BSPWM
+#
+
+# Close
+super + q
+    bspc node -c
+
+# Restart WM
+super + alt + r
+    bspc wm -r
+
+# Logout BSPWM session
+super + alt + q
+    bspc quit
+
+# Floating
+super + shift + space
+    bspc node -t ~floating
+
+# Fullscreen
+super + f
+    bspc node -t ~fullscreen
+
+# Focus
+super + {h,j,k,l}
+    bspc node -f {west,south,north,east}
+
+# Swap / move window
+super + shift + {h,j,k,l}
+    bspc node -s {west,south,north,east}
+
+# Resize
+super + alt + {h,j,k,l}
+    bspc node -z {left -30 0,bottom 0 30,top 0 -30,right 30 0}
+
+# Workspace
+super + {1-9,0}
+    bspc desktop -f '^{1-9,10}'
+
+# Send + follow
+super + shift + {1-9,0}
+    bspc node -d '^{1-9,10}' --follow
+
+# Next / previous desktop
+super + bracketleft
+    bspc desktop -f prev.local
+
+super + bracketright
+    bspc desktop -f next.local
+
+# Monocle / tiled
+super + m
+    bspc desktop -l next
+
+# Hide / restore current node
+super + shift + x
+    bspc node -g hidden
+
+super + ctrl + x
+    bspc node -g hidden=off
+
+# Show desktop toggle: hide all visible windows / restore hidden windows
+super + shift + d
+    sh -c 'if bspc query -N -d -n .hidden | grep -q .; then bspc query -N -d -n .hidden | xargs -r -I{} bspc node {} -g hidden=off; else bspc query -N -d -n "!hidden" | xargs -r -I{} bspc node {} -g hidden=on; fi'
+
+#
+# Screenshot
+#
+
+# macOS/Windows style region capture
+super + shift + s
+    flameshot gui
+
+#
+# Audio
+#
+
+# Đổi âm lượng + hiện OSD dunst (giới hạn 100%)
+XF86AudioRaiseVolume
+    ~/.config/polybar/scripts/volume.sh up
+
+XF86AudioLowerVolume
+    ~/.config/polybar/scripts/volume.sh down
+
+XF86AudioMute
+    ~/.config/polybar/scripts/volume.sh mute

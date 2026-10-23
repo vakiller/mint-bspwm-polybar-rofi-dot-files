@@ -1,0 +1,7 @@
+# Fcitx5 / UniKey for X11
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
+# Kitty / GLFW IM support on X11
+export GLFW_IM_MODULE=ibus

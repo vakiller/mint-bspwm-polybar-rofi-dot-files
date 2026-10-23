@@ -1,0 +1,46 @@
+/* Popup nguồn – mở khi bấm icon nguồn trên polybar */
+@import "popup.rasi"
+
+window { width: 420px; }
+
+mainbox { children: [ header, listview ]; }
+
+header {
+    expand: false;
+    orientation: horizontal;
+    spacing: 10px;
+    padding: 0 6px;
+    children: [ textbox-picon, message ];
+}
+textbox-picon {
+    expand: false;
+    font: "Material Symbols Rounded 20";
+    text-color: @primary;
+    vertical-align: 0.5;
+    content: "";
+}
+message {
+    expand: true;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+}
+
+listview {
+    columns: 5;
+    lines: 1;
+    flow: horizontal;
+    fixed-columns: true;
+    spacing: 6px;
+}
+element {
+    orientation: vertical;
+    padding: 14px 0 10px 0;
+    border-radius: 16px;
+    background-color: @surface-container;
+}
+element normal.normal, element alternate.normal { background-color: @surface-container; }
+element selected.normal { background-color: @primary-container; text-color: @on-primary-container; }
+element normal.urgent, element alternate.urgent { background-color: @surface-container; text-color: @error; }
+element selected.urgent { background-color: #93000acc; text-color: #ffdad6; }
+element-text { horizontal-align: 0.5; }

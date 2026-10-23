@@ -1,0 +1,69 @@
+/* Popup lịch – mở khi bấm vào ngày giờ trên polybar */
+@import "popup.rasi"
+
+window { width: 364px; }
+
+mainbox { children: [ header, navbar, listview ]; }
+
+header {
+    expand: false;
+    orientation: vertical;
+    spacing: 2px;
+    padding: 0 6px;
+    children: [ textbox-clock, textbox-today ];
+}
+textbox-clock {
+    expand: false;
+    font: "JetBrains Mono Bold 26";
+    text-color: @primary;
+    content: "";
+}
+textbox-today {
+    expand: false;
+    text-color: @on-surface-variant;
+    content: "";
+}
+
+navbar {
+    expand: false;
+    orientation: horizontal;
+    spacing: 4px;
+    padding: 2px;
+    margin: 0 0 6px 0;
+    border-radius: 999px;
+    background-color: @surface-container;
+    children: [ button-prev, message, button-today, button-next ];
+}
+message {
+    expand: true;
+    padding: 0;
+    background-color: transparent;
+}
+message textbox {
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}
+button-prev, button-today, button-next {
+    expand: false;
+    font: "Material Symbols Rounded 17";
+    padding: 6px 14px;
+    border-radius: 999px;
+    background-color: transparent;
+    text-color: @on-surface;
+    cursor: pointer;
+    vertical-align: 0.5;
+}
+button-prev  { action: "kb-custom-1"; }
+button-next  { action: "kb-custom-2"; }
+button-today { action: "kb-custom-3"; text-color: @primary; }
+
+listview {
+    columns: 7;
+    lines: 7;
+    flow: horizontal;
+    fixed-columns: true;
+    fixed-height: true;
+    spacing: 2px;
+}
+element { padding: 8px 0; }
+element-text { horizontal-align: 0.5; }

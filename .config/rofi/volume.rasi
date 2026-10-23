@@ -1,0 +1,67 @@
+/* Popup âm lượng – mở khi bấm vào icon loa trên polybar */
+@import "popup.rasi"
+
+window { width: 360px; }
+
+mainbox { children: [ header, slider, listview ]; }
+
+header {
+    expand: false;
+    orientation: horizontal;
+    spacing: 10px;
+    padding: 0 6px;
+    children: [ textbox-vicon, message, textbox-vpct ];
+}
+textbox-vicon {
+    expand: false;
+    font: "Material Symbols Rounded 20";
+    text-color: @primary;
+    vertical-align: 0.5;
+    content: "";
+}
+message {
+    expand: true;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+}
+textbox-vpct {
+    expand: false;
+    font: "JetBrains Mono Bold 18";
+    text-color: @primary;
+    vertical-align: 0.5;
+    content: "";
+}
+
+slider {
+    expand: false;
+    orientation: horizontal;
+    spacing: 4px;
+    padding: 4px;
+    border-radius: 999px;
+    background-color: @surface-container;
+    children: [ button-down, textbox-fill, textbox-rest, button-up, button-mute ];
+}
+textbox-fill, textbox-rest {
+    expand: false;
+    font: "JetBrains Mono 11";
+    vertical-align: 0.5;
+    content: "";
+}
+textbox-fill { text-color: @primary; }
+textbox-rest { text-color: @outline; }
+button-down, button-up, button-mute {
+    expand: false;
+    font: @icon-font;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background-color: transparent;
+    text-color: @on-surface;
+    cursor: pointer;
+    vertical-align: 0.5;
+}
+button-down { action: "kb-custom-1"; }
+button-up   { action: "kb-custom-2"; }
+button-mute { action: "kb-custom-3"; text-color: @primary; }
+
+listview { lines: 4; }
